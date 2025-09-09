@@ -7,6 +7,7 @@ class Product(models.Model):
         ('womenswear', 'Womenswear'),
         ('kidswear', 'Kidswear'),
         ('exclusive', 'Exclusive'),
+        ('accessories', 'Accessories'),
     ]
     
     
