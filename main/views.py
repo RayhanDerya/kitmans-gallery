@@ -30,6 +30,20 @@ def create_product(request):
     context = {'form': form}
     return render(request, "create_product.html", context)
 
+def delete_product(request, id):
+    # Mengambil objek Product berdasarkan ID. Jika tidak ditemukan, akan mengembalikan 404
+    product = get_object_or_404(Product, pk=id)
+
+    if request.method == 'POST':
+        # Jika metode permintaan adalah POST (setelah mengklik tombol hapus), hapus item
+        product.delete()
+        # Arahkan kembali ke halaman utama setelah penghapusan
+        return redirect('main:show_main')
+    
+    # Render halaman konfirmasi penghapusan (misalnya, untuk memastikan pengguna ingin menghapus)
+    context = {'product': product}
+    return render(request, 'delete_product.html', context)
+
 def show_product(request, id):
     product = get_object_or_404(Product, pk=id)
     product.increment_views()

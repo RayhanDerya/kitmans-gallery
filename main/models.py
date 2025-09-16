@@ -19,7 +19,7 @@ class Product(models.Model):
     thumbnail = models.URLField(blank=True, null=True)
     is_featured = models.BooleanField(default=False)
     product_views = models.PositiveIntegerField(default=0)
-
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     
     def __str__(self):
         return self.name
