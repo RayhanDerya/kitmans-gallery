@@ -20,5 +20,9 @@
 {% else %}
 <p>Shop: Anonymous</p>
 {% endif %}
+{% if product.user == request.user or request.user.username == 'testakun' %}
 <a href="{% url 'main:delete_product' product.pk %}"><button>Delete Product</button></a>
+{% else %}
+<a href="{% url 'main:failed_delete' product.pk %}"><button>Delete Product</button></a>
+{% endif %}
 {% endblock content %}  

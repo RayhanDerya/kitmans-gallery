@@ -23,7 +23,7 @@ def show_main(request):
         product_list = Product.objects.filter(user=request.user)
     
     context = {
-        'title': 'The Kitman\'s Shop',
+        'title': 'The Kitman\'s Gallery',
         'npm' : '2406403381',
         'name': request.user.username,
         'class': 'PBP B',
@@ -86,13 +86,21 @@ def delete_product(request, id):
 
     if request.method == 'POST':
         # Jika metode permintaan adalah POST (setelah mengklik tombol hapus), hapus item
-        product.delete()
+        if product.user == request.user or request.user.username == "testakun":
+            product.delete()
         # Arahkan kembali ke halaman utama setelah penghapusan
-        return redirect('main:show_main')
+            return redirect('main:show_main')
     
     # Render halaman konfirmasi penghapusan (misalnya, untuk memastikan pengguna ingin menghapus)
     context = {'product': product}
     return render(request, 'delete_product.html', context)
+
+def failed_delete(request, id):
+    product = get_object_or_404(Product, pk=id)
+    context = {'product': product}
+    return render(request, 'failed_delete.html', context)
+
+
 @login_required(login_url='/login')
 def show_product(request, id):
     product = get_object_or_404(Product, pk=id)
