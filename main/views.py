@@ -20,7 +20,7 @@ def show_main(request):
     if filter_type == 'all':
         product_list = Product.objects.all()
     else:
-        product_list = Product.objects.filter(category=request.user)
+        product_list = Product.objects.filter(user=request.user)
     
     context = {
         'title': 'The Kitman\'s Shop',

@@ -15,10 +15,10 @@
 {% endif %}
 
 <p>{{ product.description }}</p>
-<a href="{% url 'main:delete_product' product.pk %}"><button>Delete Product</button></a>
-{% if news.user %}
-    <p>Shop: {{ news.user.username }}</p>
+{% if product.user %}
+<p>Shop: {{ product.user.username }}</p>
 {% else %}
-    <p>Shop: Anonymous</p>
+<p>Shop: Anonymous</p>
 {% endif %}
-{% endblock content %}
+<a href="{% url 'main:delete_product' product.pk %}"><button>Delete Product</button></a>
+{% endblock content %}  
