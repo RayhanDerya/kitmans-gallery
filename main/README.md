@@ -48,3 +48,39 @@ method is_valid() penting agar data yang diterima memenuhi ketentuan yang sudah 
 6. asdos cukup membantu dalam pengerjaan tugas 3
 
 7. ristek.link/ScreenshotPostmanRayhan
+
+# Tugas 4 
+
+1. AuthenticationForm adalah salah satu kelas formulir bawaan (built-in) yang disediakan oleh Django untuk menangani proses autentikasi pengguna. Secara khusus, formulir ini dirancang untuk menerima input username dan password. AuthenticationForm sangat mudah digunakan karena telah disiapkan secara default oleh Django. Formulir ini telah mengimplementasikan validasi dan keamanan st sayar Django, seperti proteksi CSRF. Namun, AuthenticationForm hanya menerima username dan password. Jika kamu ingin menambahkan kolom lain, seperti email atau nomor telepon, kamu harus membuat formulir kustom atau memperluas kelasnya.
+
+2. Autentikasi adalah proses validasi/verifikasi identitas user.Proses ini biasanya melibatkan pemeriksaan kredensial, seperti username dan password, untuk memastikan bahwa user tersebut adalah pemilik akun yang sah.
+
+Otorisasi adalah proses menentukan hak atau izin apa yang dimiliki pengguna yang telah terautentikasi. Otorisasi menentukan apakah pengguna memiliki izin untuk mengakses sumber daya tertentu, seperti halaman web, data, atau fitur.
+
+3. Kelebihan session:
+    - Data session disimpan di sisi server, sehingga tidak bisa diakses atau dimodifikasi oleh pengguna secara langsung. 
+    - Tidak ada batasan ukuran data yang bisa disimpan dalam session, selain kapasitas server itu sendiri.
+
+   Kekurangan session:
+   - Setiap session aktif menggunakan sumber daya server (RAM atau database). Jika jumlah pengguna sangat banyak, ini bisa membebani server.
+
+    Kelebihan cookie:
+    - Tidak membebani server karena data disimpan di sisi klien (browser pengguna).
+    - Cocok untuk aplikasi yang perlu diakses secara global atau menggunakan load balancing, karena tidak bergantung pada server tertentu untuk menyimpan data.
+
+    kekurangan cookie:
+    - Data cookies disimpan di browser pengguna dan bisa dilihat, dimodifikasi, atau dicuri oleh pihak lain jika tidak dikelola dengan benar.
+    - Ukuran cookie terbatas (sekitar 4KB), sehingga tidak cocok untuk menyimpan data dalam jumlah besar.
+
+4. Secara default, cookies tidak sepenuhnya aman. Ada beberapa risiko yang harus diwaspadai, seperti pencurian data cookies melalui XSS atau MITM jika tidak secure, perusakan atau modifikasi data cookies oleh pihak lain, dan CSRF. Django mengatasi masalah tersebut dengan menerapkan beberapa flag, seperti HttpOnly flag yang membuat cookies tidak dapat diakses oleh JavaScript mengurangi risiko pencurian, Secure flag yang mengatur cookies agar hanya dikirin melalui koneksi https mengurangi risiko serangan oleh MITM, dan CSRF Token yang memvalidasi permintaan apakah permintaan dari pihak yang terdaftar sebagai trusted origin.
+
+5. *Registrasi, Login, dan Logout*
+Untuk mengimplementasikan fitur ini,  saya membuat fungsi register(), login_user(), dan logout_user() di main/views.py yang terhubung ke URL yang sesuai di main/urls.py. Halaman register.html menggunakan UserCreationForm bawaan Django untuk membuat akun baru. Sementara itu, login.html menggunakan AuthenticationForm untuk memproses login. Fungsi logout_user() akan mengakhiri sesi dan menghapus cookie last_login, lalu mengarahkan pengguna ke halaman login.
+
+*Menghubungkan Model Product dengan User*
+Untuk membuat setiap produk terhubung dengan pemiliknya, saya menambahkan ForeignKey ke model Product di main/models.py, yang menautkannya ke model User bawaan Django. Setelah model dimodifikasi, saya menjalankan migrasi, untuk menerapkan perubahan pada database. Di main/views.py, saat membuat produk baru, saya menetapkan request.user sebagai pemilik produk tersebut.
+
+Menampilkan Detail Pengguna dan Menggunakan Cookies
+Di main/templates/main.html, saya menampilkan detail pengguna yang sedang login, seperti username, yang diteruskan dari views.py melalui context. Untuk mengimplementasikan cookie, pada fungsi login_user(), saya mengatur cookie last_login untuk menyimpan waktu login terakhir. Cookie ini kemudian bisa diakses di show_main() menggunakan request.COOKIES.get() untuk ditampilkan di halaman utama.
+
+
