@@ -42,7 +42,10 @@ def register(request):
             form.save()
             messages.success(request, 'Your account has been successfully created!')
             return redirect('main:login')
-    context = {'form':form}
+    context = {
+        'form':form,
+        'title' : "The Kitman's Gallery",
+        }
     return render(request, 'register.html', context)
 
 def login_user(request):
@@ -58,7 +61,9 @@ def login_user(request):
 
     else:
       form = AuthenticationForm(request)
-    context = {'form': form}
+    context = {'form': form,
+               'title' : "The Kitman's Gallery",
+               }
     return render(request, 'login.html', context)
 
 def logout_user(request):
@@ -77,29 +82,20 @@ def create_product(request):
         form.save()
         return redirect('main:show_main')
 
-    context = {'form': form}
+    context = {
+        'form': form,
+        'title' : "The Kitman's Gallery",
+        }
     return render(request, "create_product.html", context)
 
 def delete_product(request, id):
-    # Mengambil objek Product berdasarkan ID. Jika tidak ditemukan, akan mengembalikan 404
     product = get_object_or_404(Product, pk=id)
-
     if request.method == 'POST':
-        # Jika metode permintaan adalah POST (setelah mengklik tombol hapus), hapus item
         if product.user == request.user or request.user.username == "testakun":
             product.delete()
-        # Arahkan kembali ke halaman utama setelah penghapusan
             return redirect('main:show_main')
-    
-    # Render halaman konfirmasi penghapusan (misalnya, untuk memastikan pengguna ingin menghapus)
     context = {'product': product}
     return render(request, 'delete_product.html', context)
-
-def failed_delete(request, id):
-    product = get_object_or_404(Product, pk=id)
-    context = {'product': product}
-    return render(request, 'failed_delete.html', context)
-
 
 @login_required(login_url='/login')
 def show_product(request, id):
@@ -136,3 +132,17 @@ def show_json_by_id(request, product_id):
         return HttpResponse(json_data, content_type="application/json")
     except Product.DoesNotExist:
         return HttpResponse(status=404)
+    
+def edit_product(request, id):
+    product = get_object_or_404(Product, pk=id)
+    form = ProductForm(request.POST or None, instance=product)
+    if form.is_valid() and request.method == 'POST':
+        form.save()
+        return redirect('main:show_main')
+
+    context = {
+        'form': form,
+        'product': product
+    }
+
+    return render(request, "edit_product.html", context)
