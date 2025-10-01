@@ -1,18 +1,21 @@
-<nav class="fixed top-0 left-0 w-full bg-white border-b border-gray-200 shadow-sm z-50">
+
+{% load static %}
+<nav class="fixed top-0 left-0 w-full border-b border-gray-200 shadow-sm z-50" style="background-color:#DFAC2A;">
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
       <div class="flex items-center justify-between h-16">
         <div class="flex items-center">
           <h1 class="text-xl font-semibold text-gray-900">
-            <span class="text-green-600">The Kitman's</span> Gallery
+              <!--<img src="{% static 'image/Logo.png' %}" alt="Logo" style="object-fit: fill;"></img>-->
+              <span class="text-white">The Kitman's</span> Gallery
           </h1>
         </div>
         
         <!-- Desktop Navigation -->
         <div class="hidden md:flex items-center space-x-8">
-          <a href="/" class="text-gray-600 hover:text-gray-900 font-medium transition-colors">
+          <a href="/" class="text-white hover:text-gray-900 font-medium transition-colors">
             Home
           </a>
-          <a href="{% url 'main:create_product' %}" class="text-gray-600 hover:text-gray-900 font-medium transition-colors">
+          <a href="{% url 'main:create_product' %}" class="text-white hover:text-gray-900 font-medium transition-colors">
             Create product
           </a>
         </div>
@@ -21,17 +24,17 @@
         <div class="hidden md:flex items-center space-x-6">
           {% if user.is_authenticated %}
             <div class="text-right">
-              <div class="text-sm font-medium text-gray-900">{{ name|default:user.username }}</div>
+              <div class="text-sm font-medium text-white">{{ name|default:user.username }}</div>
               <div class="text-xs text-gray-500">{{ npm|default:"Student" }} - {{ class|default:"Class" }}</div>
             </div>
-            <a href="{% url 'main:logout' %}" class="text-red-600 hover:text-red-700 font-medium transition-colors">
-              Logout
+            <a href="{% url 'main:logout' %}" class="text-white hover:text-red-900 font-medium transition-colors" style="background-color:red; border-radius: 20px; padding-left: 10px; padding-right: 10px; padding-top: 2px; padding-bottom: 2px; drop-shadow: grey; border: 1px black;">
+              Logout  
             </a>
           {% else %}
             <a href="{% url 'main:login' %}" class="text-gray-600 hover:text-gray-900 font-medium transition-colors">
               Login
             </a>
-            <a href="{% url 'main:register' %}" class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded font-medium transition-colors">
+            <a href="{% url 'main:register' %}" class="bg-yellow-500 hover:bg-yellow-700 text-white px-4 py-2 rounded font-medium transition-colors">
               Register
             </a>
           {% endif %}
@@ -78,7 +81,7 @@
               <a href="{% url 'main:login' %}" class="block text-gray-600 hover:text-gray-900 font-medium py-3 transition-colors">
                 Login
               </a>
-              <a href="{% url 'main:register' %}" class="block bg-green-600 hover:bg-green-700 text-white font-medium py-3 px-4 rounded text-center transition-colors">
+              <a href="{% url 'main:register' %}" class="block bg-yellow-500-600 hover:bg-yellow-500-700 text-white font-medium py-3 px-4 rounded text-center transition-colors">
                 Register
               </a>
             </div>

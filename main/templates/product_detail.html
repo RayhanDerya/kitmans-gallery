@@ -3,7 +3,7 @@
 {% load humanize%}
 
 {% block meta %}
-<title>{{ product.name }} - Football Collections</title>
+    <title>{{ product.name }} - Football Collections</title>
 {% endblock meta %}
 
 {% block content %}
@@ -23,7 +23,7 @@
             <!-- Header -->
             <div class="p-6 sm:p-8">
                 <div class="flex flex-wrap items-center gap-2 mb-4">
-                    <span class="inline-flex items-center px-3 py-1 rounded-md text-xs font-medium bg-green-600 text-white">
+                    <span class="inline-flex items-center px-3 py-1 rounded-md text-xs font-medium bg-yellow-500 text-white">
                         {{ product.get_category_display }}
                     </span>
                     {% if product.is_featured %}
