@@ -83,4 +83,54 @@ Untuk membuat setiap produk terhubung dengan pemiliknya, saya menambahkan Foreig
 Menampilkan Detail Pengguna dan Menggunakan Cookies
 Di main/templates/main.html, saya menampilkan detail pengguna yang sedang login, seperti username, yang diteruskan dari views.py melalui context. Untuk mengimplementasikan cookie, pada fungsi login_user(), saya mengatur cookie last_login untuk menyimpan waktu login terakhir. Cookie ini kemudian bisa diakses di show_main() menggunakan request.COOKIES.get() untuk ditampilkan di halaman utama.
 
+# Tugas 5
+1. Urutan Prioritas CSS Selector
+
+Secara singkat, urutan prioritas (atau cascade & specificity) CSS bekerja seperti ini (dari prioritas tertinggi ke terendah):
+pada aturan tertentu (catatan: hindari penggunaan berlebihan).
+Style inline pada elemen HTML (misal: <div style="color:red">).
+Selector dengan ID (misal: #header) — specificity: 0,1,0,0.
+Selector kelas dan atribut (misal: .card, [type="text"]) serta pseudo-class (misal: :hover) — specificity: 0,0,1,0.
+Selector elemen/tag (misal: div, h1) dan pseudo-elemen (misal: ::before) — specificity: 0,0,0,1.
+Jika specificity sama, yang muncul lebih akhir di stylesheet (source order) yang menang.
+
+2. Mengapa Responsive Design Penting?
+
+Beragam ukuran layar: Pengguna membuka aplikasi lewat ponsel, tablet, laptop, atau layar besar — desain harus menyesuaikan.
+Pengalaman pengguna (UX): Layout yang pas membuat aplikasi lebih nyaman dan cepat dipakai.
+SEO & aksesibilitas: Mesin pencari dan pengguna menghargai situs yang mobile-friendly.
+Pemeliharaan: Dengan pendekatan responsive yang baik (mobile-first dan component-based) kode menjadi lebih mudah dikelola.
+Contoh aplikasi yang sudah menerapkan responsive design:
+Gmail / Google Drive: tampilannya menyesuaikan ukuran layar, menu berubah menjadi ikon/hamburger di mobile.
+Twitter: responsive; card dan feed menyesuaikan.
+Contoh aplikasi yang belum / kurang menerapkan responsive design:
+Situs pemerintah lama atau situs kampus yang belum di-update: sering tampil seperti versi desktop yang dipaksa di mobile, menyebabkan tombol kecil dan layout berantakan.
+
+Mengapa? Aplikasi modern biasanya dibangun ulang dengan framework yang mendukung responsive (Bootstrap, Tailwind, CSS Grid), sedangkan situs lama dibuat sebelum tren mobile-first dan belum diperbarui.
+
+3. Perbedaan Margin, Border, dan Padding + Cara Mengimplementasikan
+
+Margin: ruang di luar elemen. Mengatur jarak antar elemen.
+Border: garis di sekitar elemen; berada di antara padding dan margin.
+Padding: ruang di dalam elemen, antara isi (content) dan border.
+
+4. Konsep Flexbox dan Grid Layout beserta Kegunaannya
+
+Flexbox (Flexible Box)
+
+Cocok untuk layout satu dimensi: baris (row) atau kolom (column).
+Berguna untuk menyusun item dalam satu baris yang harus dirata-kan, ditengah-kan, atau di-break responsif.
+Contoh kasus: navbar, daftar tombol, card-row yang wrap ke baris baru.
+
+CSS Grid
+
+Kuat untuk layout dua dimensi (baris & kolom).
+Cocok untuk desain halaman kompleks: grid gallery, dashboard, main layout dengan sidebar dan konten.
+
+5. Step by Step Checklist
+
+Implementasi fungsi edit dan delete pada views.py dengan menambahkan <a>Edit</a> dan <a>Delete</a> serta menambahkan href ke laman detail dan edit lalu routing di urls.py
+
+kostumisasi halaman dilakukan dengan menambahkan inline style dengan framework css tailwind agar lebih mudah diaplikasikan.
+
 
