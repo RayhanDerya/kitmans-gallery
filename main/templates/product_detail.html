@@ -18,12 +18,12 @@
         </div>
         
         <!-- Article -->
-        <article class="bg-white rounded-lg border border-gray-200 overflow-hidden">
+        <article class="bg-amber-50 rounded-lg border border-gray-200 overflow-hidden">
             
             <!-- Header -->
             <div class="p-6 sm:p-8">
                 <div class="flex flex-wrap items-center gap-2 mb-4">
-                    <span class="inline-flex items-center px-3 py-1 rounded-md text-xs font-medium bg-yellow-500 text-white">
+                    <span class="inline-flex items-center px-3 py-1 rounded-md text-xs font-medium bg-yellow-500 text-amber-50">
                         {{ product.get_category_display }}
                     </span>
                     {% if product.is_featured %}
@@ -64,7 +64,7 @@
             <!-- Content -->
             <div class="p-6 sm:p-8">
                 <div class="prose prose-lg max-w-none">
-                    <div class="text-gray-700 leading-relaxed whitespace-pre-line text-base sm:text-lg">
+                    <div class="text-gray-700 leading-relaxed amber-50space-pre-line text-base sm:text-lg">
                         {{ product.content }}
                     </div>
                 </div>
