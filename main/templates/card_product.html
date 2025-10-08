@@ -1,45 +1,52 @@
 {% load static %}
 {% load humanize %}
-<article class="bg-amber-50 rounded-lg border border-gray-200 hover:shadow-lg transition-shadow duration-300 overflow-hidden">
+<article class="group bg-amber-50 border-gray-200 hover:shadow-lg hover:scale-105 hover:bg-black-900 transition-shadow-scale-bg duration-500 overflow-hidden">
   <!-- Thumbnail -->
-  <div class="aspect-[3/4] relative overflow-hidden">
-    {% if product.thumbnail %}
-      <img src="{{ product.thumbnail }}" alt="{{ product.name }}" class="w-full h-full object-cover">
-    {% else %}
-      <div class="w-full h-full bg-gray-200"></div>
-    {% endif %}
+<div class="aspect-[3/4] relative overflow-hidden group">
+  {% if product.thumbnail %}
+    <img src="{{ product.thumbnail }}" alt="{{ product.name }}" 
+         class="w-full h-full object-cover transition-all duration-300 group-hover:brightness-50 group-hover:scale-[1.6] group-hover:blur-sm">
 
-    <!-- Category Badge -->
-    <div class="absolute top-3 left-3">
-      <span class="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-medium bg-yellow-500 text-amber-50">
-        {{ product.get_category_display }}
-      </span>
-    </div>
+    <!-- Overlay text -->
+    <p class="absolute inset-0 flex items-center justify-center text-lg font-mono text-white 
+              opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-hover:drop-shadow-white">
+      {{ product.name }}
+    </p>
+  {% else %}
+    <div class="w-full h-full bg-gray-200"></div>
+  {% endif %}
 
-    <!-- Status Badges -->
-    <div class="absolute top-3 right-3 flex space-x-2">
-      {% if product.is_featured %}
-        <span class="inline-flex items-center px-2 py-1 rounded text-xs font-medium bg-yellow-100 text-yellow-800">
-          Featured
-        </span>
-      {% endif %}
-      {% if product.is_product_hot %}
-        <span class="inline-flex items-center px-2 py-1 rounded text-xs font-medium bg-red-100 text-red-800">
-          Hot
-        </span>
-      {% endif %}
-    </div>
+  <!-- Category Badge -->
+  <div class="absolute top-3 left-3">
+    <span class="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-medium bg-yellow-500 text-amber-50">
+      {{ product.get_category_display }}
+    </span>
   </div>
 
+  <!-- Status Badges -->
+  <div class="absolute top-3 right-3 flex space-x-2">
+    {% if product.is_featured %}
+      <span class="inline-flex items-center px-2 py-1 rounded text-xs font-medium bg-yellow-100 text-yellow-800">
+        Featured
+      </span>
+    {% endif %}
+    {% if product.is_product_hot %}
+      <span class="inline-flex items-center px-2 py-1 rounded text-xs font-medium bg-red-100 text-red-800">
+        Hot
+      </span>
+    {% endif %}
+  </div>
+</div>
+
   <!-- Content -->  
-   <div class="p-5">
+   <div class="p-5 group-hover:bg-black-900 transition-colors">
     <div class="flex justify-between items-start mb-3">
-      <h3 class="text-lg font-semibold text-gray-900 line-clamp-2 leading-tight">
-        <a href="{% url 'main:show_product' product.id %}" class="hover:text-yellow-500 transition-colors">
+      <h3 class="text-lg font-bold text-gray-900 line-clamp-2 leading-tight">
+        <a href="{% url 'main:show_product' product.id %}" class="hover:text-yellow-500 transition-colors font-plus-jakarta-sans">
           {{ product.name }}
         </a>
       </h3>
-      <p class="text-lg font-bold text-gray-400 flex-shrink-0 ml-4">
+      <p class="text-lg font-semibold text-gray-400 flex-shrink-0 ml-4">
         Rp.{{ product.price|intcomma }}
       </p>
     </div>
@@ -55,7 +62,7 @@
           View Detail
         </a>
         <div class="flex space-x-2">
-          <a class="text-gray-600 hover:text-gray-700 text-sm transition-colors">
+          <a href="{% url 'main:edit_product' product.id %}" class="text-gray-600 hover:text-gray-700 text-sm transition-colors">
             <button href="{% url 'main:edit_product' product.id %}">Edit</button>
           </a>
           <a href="{% url 'main:delete_product' product.pk %}" class="text-red-600 hover:text-red-700 text-sm transition-colors">

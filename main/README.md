@@ -1,3 +1,4 @@
+# Tugas 2
 # Link Web : https://rayhan-derya-kitmansgallery.pbp.cs.ui.ac.id/
 
 # Penjelasan checkpoint
@@ -17,13 +18,13 @@
 
 # Bagan Routing : https://drive.google.com/file/d/1scn4GZLybcGpxzLjCG8BtGMCxwWoNaoI/view?usp=sharing
 
-# Peran settings.py pada proyek django adalah sebagai pusat kontrol dan konfigurasi dari proyek django. settings.py mengatur koneksi databes hingga daftar aplikasi yang terpasang.
+ Peran settings.py pada proyek django adalah sebagai pusat kontrol dan konfigurasi dari proyek django. settings.py mengatur koneksi databes hingga daftar aplikasi yang terpasang.
 
-# Migrasi model pada django adalah untuk melacak perubahan pada database model dari proyek. Migrasi adalah instruksi untuk membuat perubahan tabel database menyesuaikan dengan perubahan yang diterapkan dalam kode. Dengan perintah python manage.py makemigrations pada terminal, django akan memindai perubahan pada model dan akan membuat berkas migrasi yang akan menjadi "blueprint" dari perubahan yang akan diterapkan. Lalu, dengan perintah python manage.py migrate, django akan membaca berkas migrasi yang sebelumnya dibuat lalu menerapkan perubahan dengan menjalankan instruksi yang ada pada berkas. Terakhir, django akan membuat log riwayat perubahan untuk melacak perubahan.
+ Migrasi model pada django adalah untuk melacak perubahan pada database model dari proyek. Migrasi adalah instruksi untuk membuat perubahan tabel database menyesuaikan dengan perubahan yang diterapkan dalam kode. Dengan perintah python manage.py makemigrations pada terminal, django akan memindai perubahan pada model dan akan membuat berkas migrasi yang akan menjadi "blueprint" dari perubahan yang akan diterapkan. Lalu, dengan perintah python manage.py migrate, django akan membaca berkas migrasi yang sebelumnya dibuat lalu menerapkan perubahan dengan menjalankan instruksi yang ada pada berkas. Terakhir, django akan membuat log riwayat perubahan untuk melacak perubahan.
 
-#  Django tepat untuk dijadikan permulaan pembelajaran perangkat lunak karena fitur fitur nya yang siap pakai. strukturnya yang jelas dengan arsitektur MVT (Model-View-Template) mengajarkan pemisahan tanggung jawab antara data (models.py), logika (views.py), dan tampilan (HTML). Ditambah penggunaan bahasa python yang relatif mudah dipahami pemula, django menjadi pilihan tepat untuk menjadi framework permulaan.
+  Django tepat untuk dijadikan permulaan pembelajaran perangkat lunak karena fitur fitur nya yang siap pakai. strukturnya yang jelas dengan arsitektur MVT (Model-View-Template) mengajarkan pemisahan tanggung jawab antara data (models.py), logika (views.py), dan tampilan (HTML). Ditambah penggunaan bahasa python yang relatif mudah dipahami pemula, django menjadi pilihan tepat untuk menjadi framework permulaan.
 
-# Asisten dosen membantuk cukup baik untuk tutorial dan pengerjaan tugas ini
+ Asisten dosen membantuk cukup baik untuk tutorial dan pengerjaan tugas ini
 
 
 # Tugas 3
@@ -133,4 +134,6 @@ Implementasi fungsi edit dan delete pada views.py dengan menambahkan <a>Edit</a>
 
 kostumisasi halaman dilakukan dengan menambahkan inline style dengan framework css tailwind agar lebih mudah diaplikasikan.
 
+# Tugas 6
 
+    
