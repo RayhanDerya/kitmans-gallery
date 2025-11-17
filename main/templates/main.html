@@ -22,12 +22,12 @@
     <!-- Filter Section -->
     <div class="flex flex-col sm:flex-row sm:products-center sm:justify-between mb-8 bg-amber-50 rounded-lg border border-gray-200 p-4">
       <div class="flex space-x-3 mb-4 sm:mb-0">
-        <a id="filter-all"href="?" class="bg-yellow-500 text-amber-50 px-4 py-2 rounded-md font-medium transition-colors hover:bg-yellow-500 hover:text-amber-50" >
+        <button id="filter-all" class="bg-yellow-500 text-amber-50 px-4 py-2 rounded-md font-medium transition-colors hover:bg-yellow-500 hover:text-amber-50" >
           All Collections
-        </a>
-        <a id="filter-my" href="?filter=my" class="bg-white text-gray-700 border border-gray-300 px-4 py-2 rounded-md font-medium transition-colors hover:bg-yellow-700 hover:text-white">
+        </button>
+        <button id="filter-my" class="bg-white text-gray-700 border border-gray-300 px-4 py-2 rounded-md font-medium transition-colors hover:bg-yellow-700 hover:text-white">
           My Collections
-        </a>
+        </button>
         <!-- Tombol Refresh AJAX -->
         <button onclick="fetchproductFromServer()" class="p-2 text-gray-500 bg-white border border-gray-300 rounded-md hover:bg-yellow-500 hover:text-gray-700 transition-colors" title="Refresh list">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
@@ -304,12 +304,14 @@ async function fetchproductFromServer() {
 }
 
 // Event handlers
-function handleShowAllproductClick() {
+function handleShowAllproductClick(event) {
+  event.preventDefault();
   activeFilter = 'all';
   filterAndDisplayproduct();
 }
 
-function handleShowMyproductClick() {
+function handleShowMyproductClick(event) {
+  event.preventDefault();
   activeFilter = 'my';
   filterAndDisplayproduct();
 }
