@@ -17,7 +17,6 @@ def login(request):
             auth_login(request, user)
             # Login status successful.
             return JsonResponse({
-                "user" : request.user,
                 "username": user.username,
                 "status": True,
                 "message": "Login successful!"
