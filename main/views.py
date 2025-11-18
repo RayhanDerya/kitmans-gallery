@@ -119,7 +119,17 @@ def show_xml(request):
      return HttpResponse(xml_data, description_type="application/xml")
  
 def show_json(request):
-    product_list = Product.objects.all()
+    # 1. Ambil parameter filter dari URL, defaultnya adalah 'all'
+    filter_type = request.GET.get('filter', 'all') 
+    
+    # 2. Tentukan queryset berdasarkan filter
+    if filter_type == 'user' and request.user.is_authenticated:
+        # Jika filter 'user' dan pengguna terotentikasi, tampilkan produk milik sendiri
+        product_list = Product.objects.filter(user=request.user)
+    else:
+        # Default: tampilkan semua produk (All Products)
+        product_list = Product.objects.all()
+        
     data = [
         {
             'id': str(product.id),
@@ -131,6 +141,8 @@ def show_json(request):
             'product_views': product.product_views,
             'is_featured': product.is_featured,
             'user_id': product.user_id,
+            # Pastikan field 'username' disertakan
+            'username': product.user.username if product.user else 'Anonymous', 
         }
         for product in product_list
     ]
