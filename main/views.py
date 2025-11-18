@@ -130,7 +130,7 @@ def show_json(request):
             'thumbnail': product.thumbnail,
             'product_views': product.product_views,
             'is_featured': product.is_featured,
-            'username': product.user_username,
+            'username': product.user.username,
         }
         for product in product_list
     ]
