@@ -184,7 +184,6 @@ def edit_product(request, id):
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_POST
 
-...
 
 @csrf_exempt
 @require_POST
@@ -285,3 +284,4 @@ def create_news_flutter(request):
         return JsonResponse({"status": "success"}, status=200)
     else:
         return JsonResponse({"status": "error"}, status=401)
+    
