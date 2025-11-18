@@ -131,6 +131,7 @@ def show_json(request):
             'product_views': product.product_views,
             'is_featured': product.is_featured,
             'username': product.user.username if product.user != None else "Anonymous",
+            'user_id': product.user_id,
         }
         for product in product_list
     ]
