@@ -203,7 +203,8 @@ function renderArticle(product) {
 
     
     // Set author
-    const authorName = product.user.username || 'Anonymous';
+    const authorName = product.user_username || 'Anonymous';
+    console.log('Author Name:', authorName);
     articleAuthor.textContent = `Collector: ${authorName}`;
 }
 
